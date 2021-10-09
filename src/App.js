@@ -1,7 +1,35 @@
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { render } from '@testing-library/react';
 
-function App() {
+class App extends React.Component {
+ constructor(){
+ super()
+   this.state = {
+     username: 'umapreethi',
+      data: {}
+   }
+  }
+ 
+
+ componentDidMount(){
+   this.setState({
+     
+   })
+    let url = "https://api.github.com/users/umapreethi-dev";
+    fetch(url)
+     .then(res => res.json())
+     .then(data =>{
+       console.log(data);
+       this.setState({
+         data : data
+       })
+     })
+ }
+
+
+  render(){
   return (
     <div className="App">
       <header className="App-header">
@@ -20,6 +48,7 @@ function App() {
       </header>
     </div>
   );
+  }
 }
 
 export default App;
